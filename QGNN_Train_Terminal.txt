@@ -1,0 +1,81 @@
+This is an example showing terminal output when training the QGNN.
+
+Going in order, and ignoring warnings:
+
+The printed dictionary is your gnn_train.yaml file.
+
+Then, CPU or GPU is printed, depending on you choice of device.
+
+Next, an example graph is printed to make sure your choice of cuts is what you want.
+
+Then, the layers of your network are printed. Note the Quantum Torch Layer from Pennylane in the edge and node networks.
+
+Finally, every 10 graphs, a progress report will print.
+
+
+
+(acorn) [03:21] mcamp-notebook-1:~/acorn/examples/pennylane/standalone_gnn $ python3 qgnn_run.py gnn_train.yaml qgnn_testtt
+WARNING:root:FRNN is not available, install it at https://github.com/murnanedaniel/FRNN. Using PyG radius instead.
+WARNING:root:FRNN is not available, as no GPU is available
+WARNING:root:cuDF not found, using pandas instead
+{'stage': 'edge_classifier', 'model': 'InteractionGNN', 'input_dir': '/home/mcamp/acorn/examples/pennylane/module_map/', 'stage_dir': '/home/mcamp/acorn/examples/Example_1/gnn/', 'project': 'CF_Example_1_GNN', 'gpus': 1, 'nodes': 1, 'data_split': [80, 10, 10], 'num_workers': [0, 0, 0], 'weighting': [{'weight': 2.0, 'conditions': {'y': True, 'pt': [1000, inf], 'nhits': [3, inf], 'primary': True, 'pdgId': ['not_in', [11, -11]]}}], 'hard_cuts': {'pt': [5000, inf]}, 'edge_cut': 0.5, 'undirected': True, 'node_features': ['r', 'phi', 'z'], 'node_scales': [1000, 3.14, 1000], 'hidden': 128, 'n_graph_iters': 8, 'nb_node_layer': 2, 'nb_edge_layer': 2, 'emb_channels': 0, 'layernorm': True, 'batchnorm': False, 'aggregation': ['sum', 'mean', 'max', 'std'], 'hidden_activation': 'SiLU', 'output_activation': 'Tanh', 'warmup': 5, 'lr': 0.001, 'factor': 0.9, 'patience': 10, 'max_epochs': 100} 
+
+cpu 
+
+Data(eta_angle_1=[245066], norm_x_1=[245066], norm_y_1=[245066], x=[245066], region=[245066], hit_id=[245066], y=[2392], cluster_x_2=[245066], norm_x_2=[245066], r=[245066], module_id=[245066], phi_angle_1=[245066], norm_y_2=[245066], phi_angle_2=[245066], cluster_z_1=[245066], norm_z_2=[245066], eta_angle_2=[245066], eta=[245066], cluster_y_1=[245066], cluster_z_2=[245066], cluster_y_2=[245066], cluster_x_1=[245066], phi=[245066], norm_z_1=[245066], z=[245066], track_edges=[2, 842], pdgId=[842], radius=[842], nhits=[842], particle_id=[842], pt=[842], primary=[842], config=[1], event_id='000000101', edge_index=[2, 2392], truth_map=[842], weights=[2392]) 
+
+InteractionGNN(
+  (aggregation): MultiAggregation([
+    SumAggregation(),
+    MeanAggregation(),
+    MaxAggregation(),
+    StdAggregation(),
+  ], mode=cat)
+  (node_encoder): Sequential(
+    (0): Linear(in_features=3, out_features=128, bias=True)
+    (1): LayerNorm((128,), eps=1e-05, elementwise_affine=False)
+    (2): SiLU()
+    (3): Linear(in_features=128, out_features=128, bias=True)
+    (4): LayerNorm((128,), eps=1e-05, elementwise_affine=False)
+    (5): Tanh()
+  )
+  (edge_encoder): Sequential(
+    (0): Linear(in_features=256, out_features=128, bias=True)
+    (1): LayerNorm((128,), eps=1e-05, elementwise_affine=False)
+    (2): SiLU()
+    (3): Linear(in_features=128, out_features=128, bias=True)
+    (4): LayerNorm((128,), eps=1e-05, elementwise_affine=False)
+    (5): Tanh()
+  )
+  (edge_network): Sequential(
+    (0): Linear(in_features=384, out_features=128, bias=True)
+    (1): LayerNorm((128,), eps=1e-05, elementwise_affine=False)
+    (2): SiLU()
+    (3): Linear(in_features=128, out_features=4, bias=True)
+    (4): <Quantum Torch Layer: func=qnode>
+    (5): Linear(in_features=4, out_features=128, bias=True)
+    (6): LayerNorm((128,), eps=1e-05, elementwise_affine=False)
+    (7): Tanh()
+  )
+  (node_network): Sequential(
+    (0): Linear(in_features=1152, out_features=128, bias=True)
+    (1): LayerNorm((128,), eps=1e-05, elementwise_affine=False)
+    (2): SiLU()
+    (3): Linear(in_features=128, out_features=4, bias=True)
+    (4): <Quantum Torch Layer: func=qnode>
+    (5): Linear(in_features=4, out_features=128, bias=True)
+    (6): LayerNorm((128,), eps=1e-05, elementwise_affine=False)
+    (7): Tanh()
+  )
+  (output_edge_classifier): Sequential(
+    (0): Linear(in_features=384, out_features=128, bias=True)
+    (1): LayerNorm((128,), eps=1e-05, elementwise_affine=False)
+    (2): SiLU()
+    (3): Linear(in_features=128, out_features=128, bias=True)
+    (4): LayerNorm((128,), eps=1e-05, elementwise_affine=False)
+    (5): SiLU()
+    (6): Linear(in_features=128, out_features=1, bias=True)
+  )
+) 
+
+epoch 0, graph 1, loss 0.9598536491394043, forward time 8.306082725524902, back time 21.870222330093384, 
