@@ -9,7 +9,8 @@ Ex: 'module_map/testset'
 
 Training:
 
-    Run qgnn_run.py to train, validate, and test a GNN. Currently quantum networks are implemented, but you can chose to run a classical net by setting qnn=False in "model = InteractionGNN(hparams, qnn = True).to(device)" from the qgnn_run.py file.
+    Run qgnn_run.py to train, validate, and test a GNN. Currently quantum networks are implemented, but you can chose to run a    
+    classical net by setting qnn=False in "model = InteractionGNN(hparams, qnn = True).to(device)" from the qgnn_run.py file.
 
     qgnn_run.py will print out the model structure (which is taken directly from acorn), but feel free to look into 
     acorn_pennylane.py for details.
@@ -32,7 +33,8 @@ Inference:
     Run qgnn_infer.py to score test set with trained model. Scored graphs will be saved to scored_graphs_path which should be a folder.
     Model is loaded from file .pth or .pt file, which is passed into terminal.
 
-    This uses a yaml file to cut graphs, but this can be the same as your training yaml. This implementation is mostly an artifact of acorn that I just didn't change
+    This uses a yaml file to cut graphs, but this can be the same as your training yaml. This implementation 
+    is mostly an artifact of acorn that I just didn't change
 
     TO RUN: python3 qgnn_infer.py [yaml config file] [model_path] [scored_graphs_path]
     EX: python3 qgnn_infer.py gnn_train.yaml epoch1_classic_gnn_5.pth classic_gnn_5_scores
