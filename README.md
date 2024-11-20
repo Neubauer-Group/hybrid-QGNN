@@ -1,6 +1,6 @@
 READ ME
 
-All code was ran on the UChicago Analysis Facility (see Jared's google doc) on the conda image. All files assume acorn environment is active, so follow install instructions on the acorn GitLab for that. I also use PennyLane for the quantum networks, which is external to acorn.
+All code was ran on the UChicago Analysis Facility (see Jared's google doc) on the conda image. All files assume acorn environment is active, so follow install instructions on the acorn GitLab for that. I also use PennyLane for the quantum networks, which is external to acorn (I installed this with pip/conda).
 
 Note: all steps assume graph data is in directory named module_map, and is then further split into test/train/validate. Data I used is the same as example 1 of acorn, which is outdated. May want to obtain new data.
 
