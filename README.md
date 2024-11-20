@@ -47,6 +47,8 @@ Evaluation:
 
     Notebook will save edgewise efficiency plots.
 
+    This notebook was not very structured, but you can look at it to see some examples of analysis you might do.
+
 First steps in future work: I was never able to properly implement GPU compatibility with Pennylane and Pytorch working together, although it definitely should be possible. CPU vs GPU control is set in qgnn_run.py
 
 Investigation of circuit depth and gate choices on model performance would be very interesting. Can the right choices surpass classical networks?
