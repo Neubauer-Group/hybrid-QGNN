@@ -49,7 +49,11 @@ Evaluation:
 
     This notebook was not very structured, but you can look at it to see some examples of analysis you might do.
 
-First steps in future work: The code in its current state has classical and quantum networks performing similarly (After 50 epochs, both approach similar signal efficiencies and loss values). However we want quantum advantage! Investigation of cirucit depth and gate choices has a lot of potential to change the QNN performance. I found that increasing the number of qubits had a marginal increase in performance, but I was unable to go higher than 8 before the UCAF gave me memory errors. If these memory errors can be avoided (not sure if this is avoidable considering the size of the graphs and the network), there is a route for better QNNs. Further, I was never able to make the GPU play nicely with Pennylane, but I know it is possible. GPU capabilities open the door to larger circuits, which would be great to test scaling of the network. 
+First steps in future work: The code in its current state has classical and quantum networks performing similarly (After 50 epochs, both approach similar signal efficiencies and loss values). However we want quantum advantage! 
+
+Investigation of cirucit depth and gate choices has a lot of potential to change the QNN performance. I found that increasing the number of qubits had a marginal increase in performance, but I was unable to go higher than 8 before the UCAF gave me memory errors. If these memory errors can be avoided (not sure if this is avoidable considering the size of the graphs and the network), there is a route for better QNNs. 
+
+Further, I was never able to make the GPU play nicely with Pennylane, but I know it is possible. GPU capabilities open the door to larger circuits, which would be great to test scaling of the network. 
 
 Feel free to contact me with questions if my messy code doesn't make sense. :)
 
